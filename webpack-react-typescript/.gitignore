@@ -1,4 +1,4 @@
-./dist
-!./dist/index.html
+/build
+!/build/index.html
 /node_modules
-/.vscode
+.vscode

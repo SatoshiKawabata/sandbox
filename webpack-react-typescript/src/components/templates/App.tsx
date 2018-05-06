@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { createStore, Dispatch } from "redux";
 import Actions from "../../action/Actions";
 import { IState } from "../../store/State";
-import SubComponent from "../atoms/SubComponent";
+import Todo from "../atoms/Todo";
+import TodoInput from "../atoms/TodoInput";
 
 interface IProps {
   state: IState;
@@ -12,10 +13,17 @@ interface IProps {
 
 class App extends React.Component<IProps> {
   render() {
+    console.log(this.props.state);
     return (
       <div>
         <h1>Hello React!</h1>
-        <SubComponent state={this.props.state} actions={this.props.actions} />
+        <TodoInput
+          inputLabel={this.props.state.inputLabel}
+          actions={this.props.actions}
+        />
+        {this.props.state.todos.map(todo => (
+          <Todo todo={todo} key={todo.uid} actions={this.props.actions} />
+        ))}
       </div>
     );
   }

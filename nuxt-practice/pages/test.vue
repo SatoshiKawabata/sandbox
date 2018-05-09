@@ -17,7 +17,8 @@
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
           class="button--grey">GitHub</a>
-        <a href="./test">test</a>
+          ああああああああ
+        <article-test />
       </div>
     </div>
   </section>
@@ -25,10 +26,12 @@
 
 <script>
 import AppLogo from '~/components/AppLogo.vue'
+import ArticleTest from '~/components/ArticleTest.vue'
 
 export default {
   components: {
-    AppLogo
+    AppLogo,
+    ArticleTest
   }
 }
 </script>

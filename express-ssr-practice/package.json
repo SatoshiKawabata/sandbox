@@ -1,0 +1,30 @@
+{
+  "name": "express-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node public/server.js",
+    "build": "webpack -d --progress --colors --display-error-details"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.10.1",
+    "webpack-cli": "^2.1.4"
+  }
+}

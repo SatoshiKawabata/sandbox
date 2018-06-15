@@ -1,0 +1,12 @@
+{
+  "name": "minimum-redux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watchAll ./src/"
+  },
+  "devDependencies": {
+    "jest": "^23.1.0"
+  }
+}

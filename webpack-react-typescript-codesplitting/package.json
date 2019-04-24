@@ -24,7 +24,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "build:docs": "npm run build ; cp -rf ./build/ ../docs/webpack-react-typescript-codesplitting"
+    "build:docs": "npm run build ; cp -rf ./build/ ../docs/"
   },
   "author": "",
   "license": "ISC"

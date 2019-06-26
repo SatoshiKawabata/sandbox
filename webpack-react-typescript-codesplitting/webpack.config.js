@@ -1,36 +1,43 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  mode: 'development',
+  mode: "development",
   entry: `${__dirname}/src/index.tsx`,
   output: {
     path: `${__dirname}/build`,
-    filename: 'index.js'
+    filename: "index.js"
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader'
+        use: "ts-loader"
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/index.html`,
-      filename: 'index.html',
-      inject: 'body',
+      filename: "index.html",
+      inject: "body"
     }),
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/src/index.html`,
+      filename: "page1/index.html",
+      inject: "body"
+    }),
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/src/index.html`,
+      filename: "page2/index.html",
+      inject: "body"
+    })
   ],
   resolve: {
-    extensions: [
-      '.ts', '.tsx', '.js', '.json'
-    ],
+    extensions: [".ts", ".tsx", ".js", ".json"]
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
-      contentBase: `${__dirname}/build`,
-      port: "8888",
-      historyApiFallback: { disableDotRule: true }
+    contentBase: `${__dirname}/build`,
+    port: "8888"
   }
 };

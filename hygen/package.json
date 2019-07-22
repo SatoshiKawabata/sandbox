@@ -1,0 +1,15 @@
+{
+  "name": "hygen-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "components:add": "./node_modules/.bin/hygen components add",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "hygen": "^4.0.7"
+  }
+}

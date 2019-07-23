@@ -1,4 +1,3 @@
-
 ---
 to: src/components/<%= atomicDirectory %>/<%= componentName %>.stories.tsx
 ---

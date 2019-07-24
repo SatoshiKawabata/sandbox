@@ -1,0 +1,23 @@
+{
+  "name": "express-docker-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts",
+    "docker:buld": "docker-compose up --build web",
+    "docker:up": "docker-compose up web",
+    "docker:run": "docker-compose run --rm web bash",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  }
+}

@@ -1,29 +1,29 @@
 import * as THREE from "three";
 import "./HelioWebXRPolyfill.js";
 import { VRButton } from "./VRButton.js";
+import { PerspectiveCamera, WebGLRenderer, Scene } from "three";
 
-var camera;
-var renderer;
-var scene;
+let camera: PerspectiveCamera;
+let renderer: WebGLRenderer;
+let scene: Scene;
 
 init();
 animate();
 
-function init() {
+async function init() {
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.xr.enabled = true;
   document.body.appendChild(renderer.domElement);
 
+  // XRを有効にするボタン追加
   document.body.appendChild(
     VRButton.createButton(renderer, { referenceSpaceType: "local" })
   );
 
-  //
-
+  // scebeの作成
   scene = new THREE.Scene();
-
   camera = new THREE.PerspectiveCamera(
     70,
     window.innerWidth / window.innerHeight,
@@ -32,78 +32,43 @@ function init() {
   );
   camera.layers.enable(1);
 
-  // var geometry = new THREE.BoxBufferGeometry(100, 100, 100);
-  // geometry.scale(1, 1, -1);
-  var geometry = new THREE.SphereGeometry(500, 60, 40);
+  // geometryの作成
+  const geometry = new THREE.SphereGeometry(500, 60, 40);
   geometry.applyMatrix(new THREE.Matrix4().makeScale(-1, 1, 1));
 
-  // var textures = getTexturesFromAtlasFile(
-  //   require("./images/sun_temple_stripe_stereo.jpg"),
-  //   12
-  // );
-
-  // var materials = [];
-
-  // for (var i = 0; i < 6; i++) {
-  //   materials.push(new THREE.MeshBasicMaterial({ map: textures[i] }));
-  // }
-
-  const texture = THREE.ImageUtils.loadTexture(
-    require("./images/ricoh-theta-sample.jpg")
-  );
+  // materialの作成
+  const texture = createVideoStreamTexture(await getWebCameraStream());
   const material = new THREE.MeshBasicMaterial({ map: texture });
 
-  var skyBox = new THREE.Mesh(geometry, material);
+  // geometryとmaterialからmeshを作成
+  const skyBox = new THREE.Mesh(geometry, material);
   skyBox.layers.set(1);
   scene.add(skyBox);
 
-  // var materialsR = [];
-
-  // for (var i = 6; i < 12; i++) {
-  //   materialsR.push(new THREE.MeshBasicMaterial({ map: textures[i] }));
-  // }
-
-  var skyBoxR = new THREE.Mesh(geometry, material);
+  const skyBoxR = new THREE.Mesh(geometry, material);
   skyBoxR.layers.set(2);
   scene.add(skyBoxR);
 
   window.addEventListener("resize", onWindowResize, false);
 }
 
-function getTexturesFromAtlasFile(atlasImgUrl, tilesNum) {
-  var textures = [];
-
-  for (var i = 0; i < tilesNum; i++) {
-    textures[i] = new THREE.Texture();
+async function getWebCameraStream() {
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    return stream;
   }
+  return null;
+}
 
-  var loader = new THREE.ImageLoader();
-  loader.load(atlasImgUrl, function(imageObj) {
-    var canvas, context;
-    var tileWidth = imageObj.height;
-
-    for (var i = 0; i < textures.length; i++) {
-      canvas = document.createElement("canvas");
-      context = canvas.getContext("2d");
-      canvas.height = tileWidth;
-      canvas.width = tileWidth;
-      context.drawImage(
-        imageObj,
-        tileWidth * i,
-        0,
-        tileWidth,
-        tileWidth,
-        0,
-        0,
-        tileWidth,
-        tileWidth
-      );
-      textures[i].image = canvas;
-      textures[i].needsUpdate = true;
-    }
-  });
-
-  return textures;
+function createVideoStreamTexture(stream) {
+  const video = document.createElement("video");
+  try {
+    video.src = window.URL.createObjectURL(stream);
+  } catch (e) {
+    video.srcObject = stream;
+  }
+  video.play();
+  return new THREE.VideoTexture(video);
 }
 
 function onWindowResize() {

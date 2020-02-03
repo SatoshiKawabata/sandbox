@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx parcel ./src/index.html"
+    "start": "npx parcel ./src/index.html",
+    "build": "npx parcel build ./src/index.html",
+    "deploy": "yarn build ; cp ./dist/* ../docs/"
   },
   "author": "",
   "license": "ISC",

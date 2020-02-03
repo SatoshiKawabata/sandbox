@@ -54,7 +54,11 @@ async function init() {
 
 async function getWebCameraStream() {
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: "environment"
+      }
+    });
     return stream;
   }
   return null;

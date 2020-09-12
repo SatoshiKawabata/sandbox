@@ -1,0 +1,24 @@
+{
+  "name": "webpack-prect-typescript-emotion",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "preact": "^10.4.8"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.49",
+    "ts-loader": "^8.0.3",
+    "tslint": "^6.1.3",
+    "typescript": "^4.0.2",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "start": "./node_modules/.bin/webpack-dev-server"
+  }
+}

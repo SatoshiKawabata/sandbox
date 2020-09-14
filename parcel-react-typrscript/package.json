@@ -1,0 +1,22 @@
+{
+  "name": "parcel-react-typrscript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
+    "parcel-bundler": "^1.12.4",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "@adobe/react-spectrum": "^3.1.0",
+    "components": "^0.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "scripts": {
+    "start": "npx parcel ./src/index.html",
+    "build": "npx parcel build ./src/index.html -d build"
+  }
+}

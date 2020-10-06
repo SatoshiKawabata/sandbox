@@ -1,0 +1,20 @@
+{
+  "name": "Freee working time viewer",
+  "manifest_version": 2,
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon_32.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["contents.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": ["storage", "activeTab", "tabs", "windows"],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

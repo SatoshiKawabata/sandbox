@@ -16,7 +16,7 @@ export const WorkingTimeViewer = () => {
 
   return (
     <div>
-      You are working for <span>{hours}</span> hours <span>{minutes}</span>{" "}
+      You are working for <span style={{fontWeight: "bold"}}>{hours}</span> hours <span style={{fontWeight: "bold"}}>{minutes}</span>{" "}
       minutes today.
     </div>
   );

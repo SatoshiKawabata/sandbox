@@ -14,7 +14,8 @@ const App = () => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       setIsTargetPage(tabs[0].url === URL);
       if (tabs[0].url !== URL) {
-        sendToTab("open-url::" + URL);
+        // sendToTab("open-url::" + URL);
+        window.open(URL, "_blank");
       }
     });
   }, []);
@@ -26,7 +27,7 @@ const App = () => {
         <WorkingTimeViewer />
       ) : (
         <a href={URL} target="_blank">
-          Access to freee page
+          Please access to freee page.
         </a>
       )}
     </div>

@@ -1,15 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
 import { getWorkingMilliSeconces, getWorkingStamps } from "./utils/FreeeUtil";
 
-const Main = () => {
-  return <div>Hello Content Scripts.</div>;
-};
+// const Main = () => {
+//   return <div>Hello Content Scripts.</div>;
+// };
 
-const app = document.createElement("div");
-app.id = "my-extension-root";
-document.body.appendChild(app);
-ReactDOM.render(<Main />, app);
+// const app = document.createElement("div");
+// app.id = "my-extension-root";
+// document.body.appendChild(app);
+// ReactDOM.render(<Main />, app);
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   console.log(request);

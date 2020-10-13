@@ -2,6 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Message } from "./types";
 
+window.open("/index.html", "_blank");
+
 const App = () => {
   console.log("window", window);
 

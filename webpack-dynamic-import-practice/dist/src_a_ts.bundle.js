@@ -1,0 +1,1 @@
+(self.webpackChunkwebpack_dynamic_import_practice=self.webpackChunkwebpack_dynamic_import_practice||[]).push([["src_a_ts"],{219:(e,c,t)=>{"use strict";t.r(c),t.d(c,{a:()=>p});var a=document.createElement("div");a.textContent="execute a",document.body.appendChild(a);var p=1}}]);

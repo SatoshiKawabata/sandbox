@@ -1,5 +1,11 @@
 {
   "dependencies": {
     "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "http-server": "^13.0.2"
+  },
+  "scripts": {
+    "start": "npx http-server"
   }
 }

@@ -1,0 +1,9 @@
+{
+  "name": "geoHash",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ngeohash": "^0.6.3"
+  }
+}

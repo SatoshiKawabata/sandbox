@@ -16,11 +16,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
   if (request === "get-working-time") {
     if (
-      document.querySelectorAll(".sw-basic-table .time-clocks").length === 0
+      document.querySelectorAll(".vb-tableListRow").length === 0
     ) {
-      (document.querySelector(
-        ".time-clock-content.time-clock-edit > .sw-button:last-child"
-      ) as HTMLButtonElement)?.click();
+      const buttons = document.querySelectorAll(".vb-button.vb-button--appearanceTertiary.vb-button--leftIcon");
+      (buttons[1] as HTMLButtonElement).click();
     }
     const stamps = getWorkingStamps();
     const milliSec = getWorkingMilliSeconces(stamps);

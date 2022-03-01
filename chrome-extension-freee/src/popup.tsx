@@ -1,19 +1,18 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { WorkingTimeViewer } from "./components/WorkingTimeViewer";
-import { sendToTab } from "./utils/ChromeUtil";
 
-const URL = `https://p.secure.freee.co.jp/#home/${new Date().getFullYear()}/${
-  new Date().getMonth() + 1
-}`;
+const URL = `https://p.secure.freee.co.jp`;
 
 const App = () => {
   const [isTargetPage, setIsTargetPage] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      setIsTargetPage(tabs[0].url === URL);
-      if (tabs[0].url !== URL) {
+      const url = tabs[0].url || "";
+      const _isTargetUrl = url.indexOf(URL) > -1;
+      setIsTargetPage(_isTargetUrl);
+      if (!_isTargetUrl) {
         // sendToTab("open-url::" + URL);
         window.open(URL, "_blank");
       }

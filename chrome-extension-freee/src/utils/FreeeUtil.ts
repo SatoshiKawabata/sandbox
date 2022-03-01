@@ -9,12 +9,12 @@ export const URL = `https://p.secure.freee.co.jp/#home/${new Date().getFullYear(
 
 export const getWorkingStamps = () => {
   let stamps = Array.from(
-    document.querySelectorAll(".sw-basic-table .time-clocks")
+    document.querySelectorAll(".vb-tableListRow")
   ).map((elm) => {
-    const type = elm.getElementsByClassName("type")[0].textContent;
+    const type = elm.getElementsByClassName("vb-tableListCell__text")[0].textContent;
     const dateTime =
-      elm.getElementsByClassName("datetime")[1].getElementsByTagName("input")[0]
-        .value || elm.getElementsByClassName("datetime")[0].textContent;
+      elm.getElementsByClassName("vb-tableListCell__text")[2].getElementsByTagName("input")[0]
+        .value || elm.getElementsByClassName("vb-tableListCell__text")[1].textContent;
     console.log(type, dateTime);
     return { type, dateTime } as Stamp;
   });

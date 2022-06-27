@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "images": "^3.0.2",
-    "three": "^0.112.1",
+    "three": "^0.137.0",
     "three-orbitcontrols-ts": "^0.1.2"
   }
 }

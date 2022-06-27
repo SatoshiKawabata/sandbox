@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { WebsocketProvider } from "y-websocket";
 import * as Y from "yjs";
+import { parse } from "./yJson";
 
 const ydoc = new Y.Doc();
 const wsProvider = new WebsocketProvider(
@@ -12,10 +13,20 @@ wsProvider.on("status", (event: any) => {
   console.log(event.status, event); // logs "connected" or "disconnected"
 });
 
-const yArray = ydoc.getArray<string>("yjs-practice:array");
+type Item = {
+  text: string;
+  id: number;
+};
+
+const yArray = ydoc.getArray<Item>("yjs-practice:array");
+
+const mock = require("./mock.json");
+const json = parse(mock, ydoc);
+console.log(json);
 
 export function App() {
-  const [list, setList] = useState<string[]>(yArray.toArray());
+  // const [yList, setYList] = useState<Y.Array<Item>>(ydoc.getArray<Item>("yjs-practice:array"));
+  const [list, setList] = useState<Item[]>(yArray.toArray());
   const [text, setText] = useState("");
 
   useEffect(() => {
@@ -34,17 +45,26 @@ export function App() {
       />
       <button
         onClick={() => {
-          yArray.push([text]);
+          yArray.push([{ text, id: Date.now() }]);
           setText("");
         }}
       >
         Add
       </button>
       <ul>
-        {list.map((text, i) => {
+        {list.map((item, i) => {
           return (
             <li key={i}>
-              {text}
+              <input
+                type="text"
+                value={item.text}
+                onInput={(e) => {
+                  const text = (e.target as HTMLInputElement).value;
+                  yArray.get(i).text = text;
+                  // yArray.delete(i, 1);
+                  // yArray.insert(i, [{ text, id: item.id }]);
+                }}
+              />
               <button
                 onClick={() => {
                   yArray.delete(i, 1);

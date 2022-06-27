@@ -18,6 +18,6 @@
   },
   "scripts": {
     "start": "parcel -p 1235 src/index.html",
-    "start:websocket": "HOST=localhost PORT=1234 npx y-websocket-server"
+    "start:ws": "HOST=localhost PORT=1234 npx y-websocket-server"
   }
 }
